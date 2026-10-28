@@ -2,24 +2,24 @@
 class AnkiX < Formula
   desc "Learn with Anki Desktop from your terminal"
   homepage "https://github.com/HunterChan-SR/anki-x"
-  version "1.0.0rc2"
+  version "1.0.0rc3"
   license "MIT"
 
   on_macos do
     depends_on macos: :ventura
     on_arm do
-      url "https://github.com/HunterChan-SR/anki-x/releases/download/v1.0.0rc2/anki-x-1.0.0rc2-macos-arm64.zip"
-      sha256 "5ecffc65aacd8e9dd11171242eaf96f3ef17d67da95caaf6f79088127100c15b"
+      url "https://github.com/HunterChan-SR/anki-x/releases/download/v1.0.0rc3/anki-x-1.0.0rc3-macos-arm64.zip"
+      sha256 "630cb59f5ef9aa868bf1b0e5f9cfd46a8809af549f67bf9a7ee4aa44288fb5ae"
     end
     on_intel do
-      url "https://github.com/HunterChan-SR/anki-x/releases/download/v1.0.0rc2/anki-x-1.0.0rc2-macos-x64.zip"
-      sha256 "da33d16d144105187e279c359b73e55e7f7999d0a637581abd2717925df17451"
+      url "https://github.com/HunterChan-SR/anki-x/releases/download/v1.0.0rc3/anki-x-1.0.0rc3-macos-x64.zip"
+      sha256 "3ced2ebafbb8c6f14ba253506259475a886470b5af6bd30533ec4ca98a87ff70"
     end
   end
   on_linux do
     depends_on arch: :x86_64
-    url "https://github.com/HunterChan-SR/anki-x/releases/download/v1.0.0rc2/anki-x-1.0.0rc2-linux-x64.zip"
-    sha256 "49d0956b9f435a357c18b4137ecff7b57f636c858599c2b2ecd8b8070e8ab794"
+    url "https://github.com/HunterChan-SR/anki-x/releases/download/v1.0.0rc3/anki-x-1.0.0rc3-linux-x64.zip"
+    sha256 "f7d8bdc2ab321e70683bf6ee1f91e01f3620d983e8ee465dd5aae87dbea3ed9b"
   end
 
   def install
@@ -37,6 +37,7 @@ class AnkiX < Formula
   end
 
   test do
+    ENV["ANKI_X_HOME"] = (testpath/"user").to_s
     assert_equal version.to_s, shell_output("#{bin}/anki-x --version").strip
     assert_match "brew upgrade", shell_output("#{bin}/anki-x update")
   end
